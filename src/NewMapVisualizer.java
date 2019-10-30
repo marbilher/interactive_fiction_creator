@@ -1,30 +1,24 @@
 public class NewMapVisualizer {
 
-    //private Object[][] mapData = null;
-    private MapGenerator _mapGenerator;
+    private LocationData[][] map;
 
-//    public MapVisualizer(Object[][] map) {
-//        mapData = map;
-//    }
-
-    public NewMapVisualizer(MapGenerator injectedMapGenerator) {
-        _mapGenerator = injectedMapGenerator;
+    public NewMapVisualizer(LocationData[][] mapMatrix) {
+        this.map = mapMatrix;
     }
 
-    public void DrawMap() {
-        //Object[][] mapMatrix = new Object[10][10];
-        LocationData[][] mapMatrix = _mapGenerator.generateMap();
-        for(int row = 0; row < 10; row++) {
-            for(int column = 0; column < 10; column++) {
-                if(mapMatrix[row][column].getAccessible()) {
+    public void drawMap() {
 
-                    System.out.print("[" + "X" + "]" + " ");
+        //LocationData[][] mapMatrix = _mapGenerator.generateMap();
+        for (int row = 0; row < 10; row++) {
+            for (int column = 0; column < 10; column++) {
+                if (this.map[row][column].getAccessible()) {    //we can use the LocationDataController here
+
+                    System.out.print("[" + "X" + "]" + " ");     //however we dont want to create 100 new classes
                 } else {
                     System.out.print("[" + " " + "]" + " ");
-                    //System.out.print(mapMatrix[row][column].getDescriptionText());
                 }
             }
             System.out.println();
         }
-    };
+    }
 }

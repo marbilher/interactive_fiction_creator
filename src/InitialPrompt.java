@@ -6,15 +6,12 @@ public class InitialPrompt {
         Scanner sc = new Scanner(System.in);
         String choice = null;
         System.out.println("Welcome to text adventure:");
-        System.out.println("(edit) or (play)");
+        System.out.println("(edit) a map or (play)"); //load map, edit map, play map
         choice = sc.nextLine();
         if (choice.equals("edit")) {            //call edit class singleton
 
             EditControl editGame = EditControl.getInstance();
-            System.out.println(editGame.editControlQuery);
-            MapGenerator editMapGenerator = new MapGenerator();
-            NewMapVisualizer editMap = new NewMapVisualizer(editMapGenerator);
-            editMap.DrawMap();
+            editGame.editMapOptions();
         } else if (choice.equals("play")) {     //call play class singleton
 
             PlayControl newGame = PlayControl.getInstance();

@@ -9,7 +9,7 @@ public class LocationDescriptionUpdater {
     private int row;
     private int column;
 
-    public void updateDescription(LocationData[][] myMap) {
+    public LocationData[][] updateDescription(LocationData[][] myMap) {
         System.out.println("Which map location do you want to edit? Input format #x# ie: 0x1 or 3x7");
         choice = sc.nextLine();
         if (choice.length() == 3) {
@@ -20,6 +20,8 @@ public class LocationDescriptionUpdater {
         choice = sc.nextLine();
         LocationDataController currentLocation = new LocationDataController(myMap[row][column]);
         currentLocation.setLocationDescriptionText(choice);
+        currentLocation.setLocationAccessible(true);
         System.out.println("Saved: " + myMap[row][column].getDescriptionText() + " " + "Stored at: " + row + "x" + column);
+        return myMap;
     }
 }

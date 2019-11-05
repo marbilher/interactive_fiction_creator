@@ -2,10 +2,6 @@ public class MapGenerator {
 
     private LocationData[][] map;
 
-//    public MapGenerator(LocationData[][] map) {
-//        this.map = map;
-//    }
-
     public LocationData[][] generateMap() {
         LocationData[][] mapXYArray = new LocationData[10][10]; //to-do prompt for grid size for large maps
         //grab this display from map class
@@ -15,10 +11,7 @@ public class MapGenerator {
                 mapXYArray[row][column] = locale;
             }
         }
-        //temporary test of map display
-        LocationData locale = new LocationData(true, "Cheese");
-        mapXYArray[2][2] = locale;
-//        this.map = mapXYArray;
+
         return mapXYArray;
     }
 }

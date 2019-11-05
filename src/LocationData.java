@@ -1,6 +1,6 @@
-import java.util.Map;
+import java.io.Serializable;
 
-public class LocationData {
+public class LocationData implements Serializable {
     private boolean accessible;
     private String descriptionText;
 

@@ -11,6 +11,7 @@ public class InitialPrompt {
         if (choice.equals("edit")) {            //call edit class singleton
 
             EditControl editGame = EditControl.getInstance();
+            editGame.instantiateInitialMapForEdit();
             editGame.editMapOptions();
         } else if (choice.equals("play")) {     //call play class singleton
 

@@ -9,6 +9,7 @@ public class GameStateFileStore {
 
 
     public static Object ReadObjectFromFile(String filepath) {
+        long startTime = System.currentTimeMillis();
 
         try {
 
@@ -16,8 +17,9 @@ public class GameStateFileStore {
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
             Object obj = objectIn.readObject();
-
+            long endTime = System.currentTimeMillis();
             System.out.println("The Object has been read from the file");
+            System.out.println("That took " + (endTime - startTime) + " milliseconds");
             objectIn.close();
             return obj;
 
@@ -28,6 +30,7 @@ public class GameStateFileStore {
     }
 
     public static void WriteObjectToFile(Object serObj) {
+        long startTime = System.currentTimeMillis();
 
         try {
 
@@ -35,7 +38,9 @@ public class GameStateFileStore {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(serObj);
             objectOut.close();
-            System.out.println("The Object was successfully written to a file");
+            long endTime = System.currentTimeMillis();
+            System.out.println("The Object has been read from the file");
+            System.out.println("That took " + (endTime - startTime) + " milliseconds");
 
         } catch (Exception ex) {
             ex.printStackTrace();

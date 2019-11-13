@@ -1,8 +1,14 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class PlayControl {
 
+    Scanner sc = new Scanner(System.in);
     private static PlayControl single_instance = null;
     private Coordinates currentLocation;
     private String descriptionText;
+    private HashMap<String, Coordinates> availableDirections;
+    private String choice;
 
     public String s;
 
@@ -31,6 +37,17 @@ public class PlayControl {
 
         AvailableMovements myMoveSet = new AvailableMovements(currentLocation, storedGameStateMap);
         myMoveSet.printStringDirections();
+        availableDirections = myMoveSet.getDirectionalMap();
+        choice = sc.nextLine();
+        if (availableDirections.containsKey(choice)) {
+            currentLocation = availableDirections.get(choice);  //refactor this into walkToNewLocation
+            castedGameState.setSavedPlayerLocation(currentLocation);
+            GameStateFileStore.WriteObjectToFile(castedGameState);
+            managePlayOptions();
+        } else {
+            System.out.println("Invalid option");
+            managePlayOptions();
+        }
 
     }
 

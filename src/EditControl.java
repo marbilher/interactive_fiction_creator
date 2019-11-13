@@ -23,9 +23,9 @@ public class EditControl {
 
     public void drawMapToUI() {
         //NewMapVisualizer mapVisualize = new NewMapVisualizer(myMap);
-        Object myObject = GameStateFileStore.ReadObjectFromFile("GameState.ser");
-        GameState cast = GameState.class.cast(myObject);
-        NewMapVisualizer mapVisualize = new NewMapVisualizer(cast.getMapState());
+        Object savedGameState = GameStateFileStore.ReadObjectFromFile("GameState.ser");
+        GameState castGameState = GameState.class.cast(savedGameState);
+        NewMapVisualizer mapVisualize = new NewMapVisualizer(castGameState.getMapState());
         mapVisualize.drawMap();
     }
 
@@ -33,6 +33,10 @@ public class EditControl {
 
     }
 
+    //edit map options is currently infinitelyWriteMapDescriptions
+    //for time being on play, start at 0x0
+    //later prompt for items, entities, player spawn, q, etc.
+    //on select a pos, choose action for pos
     public void editMapOptions() {
         this.drawMapToUI();
         LocationDescriptionUpdater descriptionUpdater = new LocationDescriptionUpdater();

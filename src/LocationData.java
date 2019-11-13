@@ -14,7 +14,11 @@ public class LocationData implements Serializable {
     }
 
     public String getDescriptionText() {
-        return this.descriptionText;
+        if (this.descriptionText == null) {
+            return "null text";
+        } else {
+            return this.descriptionText;
+        }
     }
 
     public void setAccessible(boolean isAccessible) {
